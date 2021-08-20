@@ -1,25 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-
+// import Gender from "./components/gender.js";
+import { SignInScreen } from "./firebase";
+import ChooseHostel from "./components/ChooseHostel";
+import Floor from "./components/Floor";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // return <SignInScreen />;
+  // return <Gender />;
+  // return <ChooseHostel />;
+  return <Floor />;
 }
 
 export default App;
