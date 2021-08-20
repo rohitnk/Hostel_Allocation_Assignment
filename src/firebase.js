@@ -1,60 +1,65 @@
-// Import FirebaseAuth and firebase.
-import React from "react";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "firebase";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Gender from "./components/gender.js";
+import React, { Component } from "react";
+import ChooseHostel from "./components/ChooseHostel";
+import Floor from "./components/Floor";
+import Gender from "./components/gender";
+import Combined from "./components/Combined";
+import { useState } from "react";
 
-// Configure Firebase.
-const config = {
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+
+firebase.initializeApp({
   apiKey: "AIzaSyBMitzZRVHSCT7et6-wCASei8N4dbKywhU",
   authDomain: "hostel-booking-app-968e5.firebaseapp.com",
-  projectId: "hostel-booking-app-968e5",
-  storageBucket: "hostel-booking-app-968e5.appspot.com",
-  messagingSenderId: "47768331712",
-  appId: "1:47768331712:web:6e0b6e7f0dddc2184dd425",
-  measurementId: "G-86LEEN5RP8",
-};
-firebase.initializeApp(config);
+});
 
-// Configure FirebaseUI.
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: "popup",
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  // signInSuccessUrl: "sadf",
-  callbacks: {
-    signInSuccessWithAuthResult: () => {
-      return false;
+class SignInScreen extends Component {
+  state = { isSignedIn: false };
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    ],
+    callbacks: {
+      signInSuccess: () => false,
     },
-  },
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-  ],
-};
+  };
 
-function SignInScreen() {
-  return (
-    <div>
-      <h1>My App</h1>
-      <p>Please sign-in:</p>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-    </div>
-  );
+  componentDidMount = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.setState({ isSignedIn: !!user });
+      console.log("user", user);
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.isSignedIn ? (
+          <span>
+            {/* */}
+            <Combined />
+          </span>
+        ) : (
+          <StyledFirebaseAuth
+            uiConfig={this.uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
 export default firebase;
 export { SignInScreen };
-
-// {'callbacks':
-// { 'signInSuccess': function(currentUser, credential, redirectUrl) {
-//   var user = currentUser;
-//   var authenticated_URL = redirectUrl;
-//   if (user != null)
-//   {
-//     return true;
-//     authenticated_URL = 'https://google.com';
-//   authenticated_URL = '<my-website's-protected-page>; } else { return false; } }
-// }}
+{
+  /* <div>Signed In!</div>
+            <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+            <img
+              alt="profile picture"
+              src={firebase.auth().currentUser.photoURL}
+            /> */
+}

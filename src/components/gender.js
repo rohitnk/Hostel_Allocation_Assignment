@@ -1,11 +1,29 @@
 import React from "react";
-
-function Gender() {
+import { useState } from "react";
+import ChooseHostel from "./ChooseHostel";
+import firebase from "firebase";
+function Gender({ setTask }) {
   return (
     <div>
-      <button>Male</button>
+      <button
+        onClick={(event) => {
+          firebase.auth().gender = "male";
+          setTask(<ChooseHostel />);
+          console.log(firebase.auth().gender);
+        }}
+      >
+        Male
+      </button>
       <br></br>
-      <button>Feale</button>
+      <button
+        onClick={(event) => {
+          firebase.auth().gender = "female";
+          console.log(firebase.auth().gender);
+          setTask(<ChooseHostel />);
+        }}
+      >
+        Female
+      </button>
     </div>
   );
 }
