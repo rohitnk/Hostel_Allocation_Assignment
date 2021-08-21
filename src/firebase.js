@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import ChooseHostel from "./components/ChooseHostel";
-import Floor from "./components/Floor";
-import Gender from "./components/gender";
 import Combined from "./components/Combined";
-import { useState } from "react";
 
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -29,37 +25,38 @@ class SignInScreen extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ isSignedIn: !!user });
-      console.log("user", user);
+      console.log("user", user, firebase.auth());
     });
   };
 
   render() {
     return (
-      <div className="App">
-        {this.state.isSignedIn ? (
-          <span>
-            {/* */}
-            <Combined />
-          </span>
-        ) : (
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
+      <>
+        {this.state.isSignedIn && (
+          <button
+            onClick={() => {
+              firebase.auth().signOut();
+            }}
+          >
+            Logout
+          </button>
         )}
-      </div>
+        <div className="App">
+          {this.state.isSignedIn ? (
+            <div>
+              <Combined />
+            </div>
+          ) : (
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          )}
+        </div>
+      </>
     );
   }
 }
 
 export default firebase;
 export { SignInScreen };
-{
-  /* <div>Signed In!</div>
-            <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img
-              alt="profile picture"
-              src={firebase.auth().currentUser.photoURL}
-            /> */
-}

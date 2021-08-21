@@ -1,7 +1,7 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 10vw 10vw 10vw 10vw;
-  /* //background-color: #2196F3; */
+  grid-template-columns: auto auto auto auto;
+  /* background-color: #2196f3; */
   padding: 10px;
 }
 .grid-item {

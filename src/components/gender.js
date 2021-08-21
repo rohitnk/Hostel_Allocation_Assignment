@@ -1,25 +1,25 @@
 import React from "react";
-import { useState } from "react";
-import ChooseHostel from "./ChooseHostel";
 import firebase from "firebase";
-function Gender({ setTask }) {
+function Gender({ setHostel, setgender }) {
+  function clicked() {
+    setgender(false);
+    setHostel(true);
+  }
   return (
     <div>
       <button
         onClick={(event) => {
           firebase.auth().gender = "male";
-          setTask(<ChooseHostel />);
-          console.log(firebase.auth().gender);
+          clicked();
         }}
       >
         Male
       </button>
       <br></br>
       <button
-        onClick={(event) => {
+        onClick={() => {
           firebase.auth().gender = "female";
-          console.log(firebase.auth().gender);
-          setTask(<ChooseHostel />);
+          clicked();
         }}
       >
         Female
