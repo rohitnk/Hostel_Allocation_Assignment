@@ -4,7 +4,7 @@ import firebase from "firebase";
 if (localStorage.getItem("hostelStorage")) {
   var hostelStorage = JSON.parse(localStorage.getItem("hostelStorage"));
 } else {
-  var hostelStorage = {
+  hostelStorage = {
     male: {
       B1: Array(6).fill(Array(11).fill(true)),
       B2: Array(6).fill(Array(11).fill(true)),
