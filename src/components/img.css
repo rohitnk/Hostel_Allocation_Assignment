@@ -1,0 +1,9 @@
+.img {
+  width: 300px;
+}
+
+.contain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

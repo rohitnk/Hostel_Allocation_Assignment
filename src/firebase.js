@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Combined from "./components/Combined";
+import "./firebase.css";
 
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -47,10 +48,16 @@ class SignInScreen extends Component {
               <Combined />
             </div>
           ) : (
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
+            <div className={"firebaseui-container"}>
+              <div className={"cente"}>
+                <h3>Hostel Allocation</h3>
+                <h3>please Sign-in:</h3>
+              </div>
+              <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </div>
           )}
         </div>
       </>

@@ -24,3 +24,6 @@
   align-items: center;
   flex-direction: column;
 }
+.red {
+  background-color: red;
+}

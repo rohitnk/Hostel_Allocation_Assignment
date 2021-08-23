@@ -1,7 +1,11 @@
 import React from "react";
 import "./ChooseHostel.css";
 import firebase from "firebase";
-export default function ChooseHostel({ setFloor, setHostel }) {
+import { useHistory } from "react-router-dom";
+
+export default function ChooseHostel() {
+  const history = useHistory();
+  const handleClick = () => history.push("/Floor");
   let z = firebase.auth().gender;
   let g = "";
   if (z === "male") g = "B";
@@ -10,8 +14,9 @@ export default function ChooseHostel({ setFloor, setHostel }) {
     <div
       onClick={(event) => {
         if (event.target.innerText === "table") return;
-        setFloor(true);
-        setHostel(false);
+        // setFloor(true);
+        // setHostel(false);
+        handleClick();
         firebase.auth().hostel = event.target.innerText;
         console.log(event);
       }}
