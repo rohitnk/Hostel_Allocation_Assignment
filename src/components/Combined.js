@@ -1,12 +1,10 @@
 import React from "react";
 import Gender from "./gender";
-import { useState, useEffect } from "react";
 import Floor from "./Floor";
 import ChooseHostel from "./ChooseHostel";
 import firebase from "firebase";
 import Final from "./Final";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import Home from "./Home";
 
 export default function Combined() {
