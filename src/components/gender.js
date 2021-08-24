@@ -1,9 +1,10 @@
 import React from "react";
-import firebase from "firebase";
+// import firebase from "firebase";
 import { useHistory } from "react-router-dom";
 import girl from "../img/girl.png";
 import boy from "../img/boy.png";
 import "./img.css";
+import { user } from "./Combined";
 
 function Gender() {
   const history = useHistory();
@@ -16,7 +17,7 @@ function Gender() {
         alt="girl"
         className="img"
         onClick={(event) => {
-          firebase.auth().gender = "female";
+          user.gender = "female";
           handleClick();
           console.log(event);
         }}
@@ -26,14 +27,14 @@ function Gender() {
         alt="boy"
         className="img"
         onClick={(event) => {
-          firebase.auth().gender = "male";
+          user.gender = "male";
           handleClick();
           console.log(event);
         }}
       ></img>
       {/* <button
         onClick={(event) => {
-          firebase.auth().gender = "male";
+         user.gender = "male";
           handleClick();
           console.log(event);
         }}
@@ -43,7 +44,7 @@ function Gender() {
       <br></br>
       <button
         onClick={() => {
-          firebase.auth().gender = "female";
+         user.gender = "female";
           handleClick();
         }}
       >

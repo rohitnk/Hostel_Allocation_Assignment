@@ -6,6 +6,7 @@ import firebase from "firebase";
 import Final from "./Final";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
+let user = {};
 
 export default function Combined() {
   if (
@@ -30,7 +31,7 @@ export default function Combined() {
       </div>
     );
 }
-
+export { user };
 // export default function Combined() {
 //   console.log(firebase.auth().gender);
 //   const [gender, setgender] = useState(true);

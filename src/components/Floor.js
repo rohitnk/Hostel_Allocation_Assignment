@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import firebase from "firebase";
+// import firebase from "firebase";
 import { useHistory } from "react-router-dom";
 import "./Floor.css";
+import { user } from "./Combined";
 
 const arr = [1, 2, 3, 4, 10, "", "", 5, 9, 8, 7, 6];
 
@@ -16,14 +17,15 @@ export default function Floor() {
         <div>
           <label htmlFor={"floor"}>Floor</label>
           <select
-            defaultValue={"1"}
+            defaultValue={1}
             id={"floor"}
             required
             onChange={(event) => {
+              console.log("onchange happened");
               selectValChange = true;
               console.log(selectValChange);
-              firebase.auth().floor = event.target.value;
-              console.log(firebase.auth().floor + " .........................");
+              user.floor = event.target.value;
+              console.log(user.floor + " .........................");
               setFloor(event.target.value);
               console.log("Floor = " + floor);
             }}
@@ -41,15 +43,16 @@ export default function Floor() {
           className="grid-container"
           onClick={(event) => {
             console.log("checking value");
+            console.log(user);
             console.log(selectValChange + "  hahaa");
             // if (selectValChange === false) {
             //   alert("plese select Floor");
             //   return;
             // }
-            firebase.auth().room = event.target.innerText;
+            user.room = event.target.innerText;
             handleClick();
-            // firebase.auth().floor = floor;
-            console.log("setcomp true");
+            // user.floor = floor;
+            // console.log("setcomp true");
           }}
         >
           <Grid floor={floor} />
@@ -62,7 +65,7 @@ export default function Floor() {
 function Grid({ floor }) {
   return arr.map((el, i) => (
     <div
-      key={i}
+      key={`${el}${i}`}
       className={`grid-item ${el === "" && "white"} ${
         el !== "" && onFloorChange(floor, el)
       }`}
@@ -77,9 +80,9 @@ function onFloorChange(floor, el) {
   if (localStorage.getItem("hostelStorage")) {
     // console.log(JSON.parse(localStorage.getItem("hostelStorage")));
     console.log("user ");
-    console.log(firebase.auth());
+    // console.log(user);
     var hostelStorage = JSON.parse(localStorage.getItem("hostelStorage"));
-    const user = firebase.auth();
+    // const user = user;
     if (hostelStorage[user.gender][user.hostel][parseInt(floor)][el])
       return "green";
     else return "red";

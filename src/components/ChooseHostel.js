@@ -1,12 +1,13 @@
 import React from "react";
 import "./ChooseHostel.css";
-import firebase from "firebase";
+// import firebase from "firebase";
 import { useHistory } from "react-router-dom";
+import { user } from "./Combined";
 
 export default function ChooseHostel() {
   const history = useHistory();
   const handleClick = () => history.push("/Floor");
-  let z = firebase.auth().gender;
+  let z = user.gender;
   let g = "";
   if (z === "male") g = "B";
   else g = "G";
@@ -17,7 +18,7 @@ export default function ChooseHostel() {
         // setFloor(true);
         // setHostel(false);
         handleClick();
-        firebase.auth().hostel = event.target.innerText;
+        user.hostel = event.target.innerText;
         console.log(event);
       }}
     >
