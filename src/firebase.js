@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Combined from "./components/Combined";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import Home from "./components/Home";
 
 firebase.initializeApp({
   apiKey: "AIzaSyBMitzZRVHSCT7et6-wCASei8N4dbKywhU",
@@ -33,7 +32,6 @@ class SignInScreen extends Component {
   render() {
     return (
       <>
-        {" "}
         <header>
           <h1>Company Name</h1>
 
