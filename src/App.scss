@@ -1,0 +1,64 @@
+.grid-cont {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* background-color: #2196F3; */
+  padding: 10px;
+}
+.grid-i {
+  color: white;
+  font-weight: 1000;
+  background-color: rgb(94, 94, 94);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 30px;
+  padding: 100px;
+  margin: 50px;
+  font-size: 60px;
+  text-align: center;
+}
+.img {
+  width: 300px;
+}
+
+.contain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  /* background-color: #2196f3; */
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(30, 240, 48, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 50px;
+  margin: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.white {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.red {
+  background-color: red;
+}
+
+.cente {
+  /* width: 100vw; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

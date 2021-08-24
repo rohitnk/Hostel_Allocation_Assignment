@@ -1,10 +1,9 @@
 import React from "react";
-// import firebase from "firebase";
 import { useHistory } from "react-router-dom";
 import girl from "../img/girl.png";
 import boy from "../img/boy.png";
-import "./img.css";
 import { user } from "./Combined";
+// import "../App.scss";
 
 function Gender() {
   const history = useHistory();

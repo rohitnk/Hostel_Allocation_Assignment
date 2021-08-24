@@ -6,6 +6,8 @@ import firebase from "firebase";
 import Final from "./Final";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
+// import "./App.scss";
+
 let user = {};
 
 export default function Combined() {

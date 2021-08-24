@@ -1,8 +1,7 @@
 import React from "react";
-import "./ChooseHostel.css";
-// import firebase from "firebase";
 import { useHistory } from "react-router-dom";
 import { user } from "./Combined";
+import "../App.scss";
 
 export default function ChooseHostel() {
   const history = useHistory();

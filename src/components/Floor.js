@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-// import firebase from "firebase";
 import { useHistory } from "react-router-dom";
-import "./Floor.css";
 import { user } from "./Combined";
 
 const arr = [1, 2, 3, 4, 10, "", "", 5, 9, 8, 7, 6];

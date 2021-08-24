@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "firebase";
 import { user } from "./Combined";
+
 const hs = () => {
   var hostelStorage;
   if (localStorage.getItem("hostelStorage")) {
@@ -30,6 +31,7 @@ const hs = () => {
   }
   return hostelStorage;
 };
+
 const Final = () => {
   var hostelStorage = hs();
   console.log("before booking and when a component is mounted");
@@ -38,23 +40,11 @@ const Final = () => {
   if (
     localStorage.getItem(`HostelUserInfo${firebase.auth().currentUser.email}`)
   ) {
-    console.log(
-      localStorage.getItem(`HostelUserInfo${firebase.auth().currentUser.email}`)
-    );
     let data = JSON.parse(
       localStorage.getItem(`HostelUserInfo${firebase.auth().currentUser.email}`)
     );
-    // console.log(data);
-    return (
-      <>
-        <h1>WELCOME {data.displayName}</h1>
-        <h1>You already Booked a room</h1>
-        <h1>Your Room details are as follows:</h1>
-        <h1>Room No. -{data.room}</h1>
-        <h1>Room Floor - {data.floor}</h1>
-        <h1>Hostel -{data.hostel}</h1>
-      </>
-    );
+
+    return <Torender isfirst={true} data={data} />;
   } else {
     let data = {
       email: firebase.auth().currentUser.email,
@@ -64,48 +54,38 @@ const Final = () => {
       hostel: user.hostel,
       displayName: firebase.auth().currentUser.displayName,
     };
-    if (
-      !localStorage.getItem(
-        `HostelUserInfo${firebase.auth().currentUser.email}`
-      )
-    ) {
-      localStorage.setItem(
-        `HostelUserInfo${firebase.auth().currentUser.email}`,
-        JSON.stringify(data)
-      );
-    }
 
-    const room = user.room;
-    const fl = user.floor;
-    const hos = user.hostel;
-    const gen = user.gender;
-
-    hostelStorage[gen][hos][fl][room] = false;
-
-    console.log("gender = " + user.gender);
-    console.log("hostel = " + user.hostel);
-    console.log("floor = " + user.floor);
-    console.log("room = " + user.room);
-    console.log(hostelStorage[user.gender][user.hostel][user.floor][user.room]);
-    console.log(
-      "......................................................................................"
+    localStorage.setItem(
+      `HostelUserInfo${firebase.auth().currentUser.email}`,
+      JSON.stringify(data)
     );
-    console.log("after booking");
-    console.log("printing hostelStorage");
-    console.log(hostelStorage);
+
+    hostelStorage[user.gender][user.hostel][user.floor][user.floor] = false;
     localStorage.setItem("hostelStorage", JSON.stringify(hostelStorage));
-    return (
-      <>
-        <h1> {firebase.auth().currentUser.displayName}</h1>
-        <h1>
-          Your Room has been booked successfully.<br></br> Your Room details are
-          as follows:
-        </h1>{" "}
-        <h1>Hostel -{user.hostel}</h1>
-        <h1>Room No. -{user.room}</h1>
-        <h1>Room Floor - {user.floor}</h1>
-      </>
-    );
+    return <Torender isfirst={true} data={data} />;
   }
 };
+
+function Torender({ isfirst, data }) {
+  return (
+    <div className={"cente"}>
+      {isfirst && (
+        <>
+          <h1>Success</h1>
+          <br />
+          <h3>Your Room has been booked successfully.</h3>
+        </>
+      )}
+      <div>
+        {/* <h1>WELCOME {data.displayName}</h1> */}
+        {!isfirst && <h1>You already Booked a room</h1>}
+
+        <h3>Your Room details are as follows:</h3>
+        <h3>Room No. -{data.room}</h3>
+        <h3>Room Floor - {data.floor}</h3>
+        <h3>Hostel -{data.hostel}</h3>
+      </div>
+    </div>
+  );
+}
 export default Final;

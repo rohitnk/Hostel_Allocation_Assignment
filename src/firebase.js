@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Combined from "./components/Combined";
-import "./firebase.css";
-
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
@@ -38,8 +36,8 @@ class SignInScreen extends Component {
             onClick={() => {
               firebase.auth().signOut();
               window.location.href =
-                "https://stupefied-rosalind-8c156b.netlify.app/";
-              // window.location.href = "http://localhost:3000/";
+                // "https://stupefied-rosalind-8c156b.netlify.app/";
+                window.location.href = "http://localhost:3000/";
             }}
           >
             Logout
