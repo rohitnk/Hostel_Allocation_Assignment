@@ -32,7 +32,7 @@ const hs = () => {
   return hostelStorage;
 };
 
-const Final = () => {
+const Final = ({ isfirst }) => {
   var hostelStorage = hs();
   console.log("before booking and when a component is mounted");
   console.log(hostelStorage);
@@ -44,7 +44,7 @@ const Final = () => {
       localStorage.getItem(`HostelUserInfo${firebase.auth().currentUser.email}`)
     );
 
-    return <Torender isfirst={true} data={data} />;
+    return <Torender isfirst={isfirst} data={data} />;
   } else {
     let data = {
       email: firebase.auth().currentUser.email,
@@ -62,28 +62,35 @@ const Final = () => {
 
     hostelStorage[user.gender][user.hostel][user.floor][user.floor] = false;
     localStorage.setItem("hostelStorage", JSON.stringify(hostelStorage));
-    return <Torender isfirst={true} data={data} />;
+    return <Torender isfirst={isfirst} data={data} />;
   }
 };
 
 function Torender({ isfirst, data }) {
   return (
     <div className={"cente"}>
-      {isfirst && (
-        <>
-          <h1>Success</h1>
-          <br />
-          <h3>Your Room has been booked successfully.</h3>
-        </>
-      )}
-      <div>
-        {/* <h1>WELCOME {data.displayName}</h1> */}
-        {!isfirst && <h1>You already Booked a room</h1>}
-
-        <h3>Your Room details are as follows:</h3>
-        <h3>Room No. -{data.room}</h3>
-        <h3>Room Floor - {data.floor}</h3>
-        <h3>Hostel -{data.hostel}</h3>
+      <div className={"innerdiv"}>
+        <div className={"innerchild"}>
+          {isfirst && (
+            <>
+              <h1>Success</h1>
+              <br />
+              <h3>Your Room has been booked successfully.</h3>
+            </>
+          )}
+        </div>
+        <div>
+          {/* <h1>WELCOME {data.displayName}</h1> */}
+          {!isfirst && (
+            <div className={"grandchild"}>
+              <h1>WELCOME {data.displayName}</h1>{" "}
+              <h3>You have already Booked a room</h3>
+            </div>
+          )}
+          <h2>Your Room details are as follows:</h2>
+          <h3>Hostel No. -{data.hostel}</h3> <h3>Room No. -{data.room}</h3>
+          <h3>Floor No. - {data.floor}</h3>
+        </div>
       </div>
     </div>
   );

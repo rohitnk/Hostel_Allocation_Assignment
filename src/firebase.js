@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Combined from "./components/Combined";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import Home from "./components/Home";
 
 firebase.initializeApp({
   apiKey: "AIzaSyBMitzZRVHSCT7et6-wCASei8N4dbKywhU",
@@ -24,25 +25,31 @@ class SignInScreen extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ isSignedIn: !!user });
-      console.log("user", user, firebase.auth());
+      console.log("this state signin");
+      console.log(this.state.isSignedIn);
     });
   };
 
   render() {
     return (
       <>
-        {this.state.isSignedIn && (
-          <button
-            onClick={() => {
-              firebase.auth().signOut();
-              window.location.href =
-                "https://stupefied-rosalind-8c156b.netlify.app/";
-              // window.location.href = "http://localhost:3000/";
-            }}
-          >
-            Logout
-          </button>
-        )}
+        {" "}
+        <header>
+          <h1>Company Name</h1>
+
+          {this.state.isSignedIn && (
+            <button
+              onClick={() => {
+                firebase.auth().signOut();
+                window.location.href =
+                  "https://stupefied-rosalind-8c156b.netlify.app/";
+                // window.location.href = "http://localhost:3000/";
+              }}
+            >
+              Logout
+            </button>
+          )}
+        </header>
         <div className="App">
           {this.state.isSignedIn ? (
             <div>

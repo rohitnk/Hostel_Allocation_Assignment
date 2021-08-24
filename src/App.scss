@@ -61,4 +61,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  .innerdiv {
+    border: 2px solid black;
+    padding: 50px;
+    border-radius: 15px;
+    height: 400px;
+    h3 {
+      margin-top: 0;
+    }
+    .innerchild,
+    .grandchild {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+header {
+  margin-top: 0px;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1 {
+    margin-left: 40px;
+  }
+  button {
+    border-radius: 20px;
+    color: aliceblue;
+    background-color: rgb(71, 23, 243);
+    height: 40px;
+    margin-right: 40px;
+    width: 70px;
+  }
 }

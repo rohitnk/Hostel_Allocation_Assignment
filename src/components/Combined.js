@@ -6,7 +6,6 @@ import firebase from "firebase";
 import Final from "./Final";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
-// import "./App.scss";
 
 let user = {};
 
@@ -15,18 +14,26 @@ export default function Combined() {
     localStorage.getItem(`HostelUserInfo${firebase.auth().currentUser.email}`)
   ) {
     console.log("user already exist");
-    return <Final />;
+
+    return (
+      <>
+        <Home renderButton={false} />
+        <Final isfirst={false} />
+      </>
+    );
   } else
     return (
       <div>
         <Router>
-          <Home path="/" component={Home} />
+          <Home path="/" renderButton={true} />
           <div>
             <Switch>
               <Route path="/gender" component={Gender} />
               <Route path="/Hostel" component={ChooseHostel} />
               <Route path="/Floor" component={Floor} />
-              <Route path="/Final" component={Final} />
+              <Route path="/Final">
+                <Final isfirst={true} />
+              </Route>
             </Switch>
           </div>
         </Router>
