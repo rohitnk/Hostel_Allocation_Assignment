@@ -60,7 +60,8 @@ const Final = ({ isfirst }) => {
       JSON.stringify(data)
     );
 
-    hostelStorage[user.gender][user.hostel][user.floor][user.floor] = false;
+    hostelStorage[user.gender][user.hostel][user.floor][user.room] = false;
+
     localStorage.setItem("hostelStorage", JSON.stringify(hostelStorage));
     return <Torender isfirst={isfirst} data={data} />;
   }
