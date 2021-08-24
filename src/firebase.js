@@ -36,8 +36,8 @@ class SignInScreen extends Component {
             onClick={() => {
               firebase.auth().signOut();
               window.location.href =
-                // "https://stupefied-rosalind-8c156b.netlify.app/";
-                window.location.href = "http://localhost:3000/";
+                "https://stupefied-rosalind-8c156b.netlify.app/";
+              // window.location.href = "http://localhost:3000/";
             }}
           >
             Logout
