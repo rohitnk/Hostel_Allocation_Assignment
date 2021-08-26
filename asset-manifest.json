@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Hostel_Allocation_Assignment/static/css/main.59c3ee0b.chunk.css",
+    "main.js": "/Hostel_Allocation_Assignment/static/js/main.1bf91a0b.chunk.js",
+    "main.js.map": "/Hostel_Allocation_Assignment/static/js/main.1bf91a0b.chunk.js.map",
+    "runtime-main.js": "/Hostel_Allocation_Assignment/static/js/runtime-main.fb9432fd.js",
+    "runtime-main.js.map": "/Hostel_Allocation_Assignment/static/js/runtime-main.fb9432fd.js.map",
+    "static/js/2.44608afa.chunk.js": "/Hostel_Allocation_Assignment/static/js/2.44608afa.chunk.js",
+    "static/js/2.44608afa.chunk.js.map": "/Hostel_Allocation_Assignment/static/js/2.44608afa.chunk.js.map",
+    "index.html": "/Hostel_Allocation_Assignment/index.html",
+    "static/css/main.59c3ee0b.chunk.css.map": "/Hostel_Allocation_Assignment/static/css/main.59c3ee0b.chunk.css.map",
+    "static/js/2.44608afa.chunk.js.LICENSE.txt": "/Hostel_Allocation_Assignment/static/js/2.44608afa.chunk.js.LICENSE.txt",
+    "static/media/boy.32968b95.png": "/Hostel_Allocation_Assignment/static/media/boy.32968b95.png",
+    "static/media/girl.983d0276.png": "/Hostel_Allocation_Assignment/static/media/girl.983d0276.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fb9432fd.js",
+    "static/js/2.44608afa.chunk.js",
+    "static/css/main.59c3ee0b.chunk.css",
+    "static/js/main.1bf91a0b.chunk.js"
+  ]
+}
